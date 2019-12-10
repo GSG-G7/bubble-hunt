@@ -53,6 +53,7 @@ class App extends React.Component {
     const { Logout } = this;
     if (loading) return <h1>Loading...</h1>;
     return (
+      <div className="background">
       <Router>
         {currentUser && <Logout />}
         <Switch>
@@ -62,6 +63,7 @@ class App extends React.Component {
           <PrivateRoute path="/login" component={Login} currentUser={!currentUser} />
         </Switch>
       </Router>
+      </div>
     );
   }
 }
