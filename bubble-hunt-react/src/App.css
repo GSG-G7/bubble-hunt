@@ -55,7 +55,7 @@ img {
   font-family: 'Oswald', sans-serif;
 	position: relative;
   right: -18px;
-  bottom: -4px;
+  bottom: 8px;
   overflow: hidden;
   letter-spacing: 3px;
   opacity: 0;
@@ -66,7 +66,7 @@ img {
 
 .button {
 	text-decoration: none;
-	float: right;
+	float: left;
   padding: 12px;
   margin: 15px;
   color: white;
@@ -76,6 +76,7 @@ img {
   -webkit-transition: width .35s;
   overflow: hidden;
   text-decoration: none;
+  height: 25px;
 }
 
 .button:hover {

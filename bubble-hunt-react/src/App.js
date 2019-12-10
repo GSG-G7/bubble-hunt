@@ -12,10 +12,15 @@ import './App.css';
 class App extends React.Component {
   state = {
     currentUser: null,
+    loading: true,
   };
 
   componentDidMount() {
-    app.auth().onAuthStateChanged(currentUser => this.setState({ currentUser }));
+    const { loading } = this.state;
+    const firstLoad = () => {
+      if (loading) this.setState({ loading: false });
+    };
+    app.auth().onAuthStateChanged(currentUser => this.setState({ currentUser }, firstLoad));
   }
 
   handleLogout = () => {
@@ -35,7 +40,7 @@ class App extends React.Component {
     >
       <div className="button">
         <img
-          src="https://pbs.twimg.com/profile_images/378800000639740507/fc0aaad744734cd1dbc8aeb3d51f8729_400x400.jpeg"
+          src="https://www.pngfind.com/pngs/m/339-3396821_png-file-svg-download-icon-logout-transparent-png.png"
           alt="logout"
         />
         <p className="logout">LOGOUT</p>
@@ -44,16 +49,17 @@ class App extends React.Component {
   );
 
   render() {
-    const { currentUser } = this.state;
+    const { currentUser, loading } = this.state;
     const { Logout } = this;
+    if (loading) return <h1>Loading...</h1>;
     return (
       <Router>
         {currentUser && <Logout />}
         <Switch>
           <Route exact path="/" component={Home} />
-          <PrivateRoute exact path="/sign-up" component={Signup} currentUser={!currentUser} />
-          <PrivateRoute exact path="/login" component={Login} currentUser={!currentUser} />
-          <PrivateRoute exact path="/aim-game" component={AimGame} currentUser={currentUser} />
+          <PrivateRoute path="/aim-game" component={AimGame} currentUser={currentUser} />
+          <PrivateRoute path="/sign-up" component={Signup} currentUser={!currentUser} />
+          <PrivateRoute path="/login" component={Login} currentUser={!currentUser} />
         </Switch>
       </Router>
     );

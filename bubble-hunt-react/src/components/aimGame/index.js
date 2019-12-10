@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Canvas from '../canvas';
 
+import './style.css';
+
 const units = 10;
 export default class AimGame extends Component {
   state = {
@@ -109,18 +111,20 @@ export default class AimGame extends Component {
   render() {
     const { bubbles, start, score, lives } = this.state;
     return (
-      <>
-        <h1 onClick={start ? this.endGame : this.startGame}>{start ? 'End' : 'Start'}</h1>
-        <h1>
+      <div className="game-container">
+        <h3 onClick={start ? this.endGame : this.startGame} className="start-end-text">
+          {start ? 'End' : 'Start'}
+        </h3>
+        <h3>
           your score is : {score} lives: {lives} best score :{this.getBestScore()}
-        </h1>
+        </h3>
         <Canvas
           units={units}
           bubbles={bubbles}
           bubbleOnClick={this.incScore}
           canvasOnClick={this.decScore}
         />
-      </>
+      </div>
     );
   }
 }

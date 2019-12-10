@@ -6,7 +6,7 @@ import image from '../../assests/depositphotos_8894419-stock-illustration-pastel
 const Signup = ({ history }) => {
   const handleSubmit = async e => {
     e.preventDefault();
-    const { email, password } = e.target.elements;
+    const { email, password, username } = e.target.elements;
     try {
       await app
         .auth()
@@ -16,7 +16,7 @@ const Signup = ({ history }) => {
             .collection('users')
             .doc(user.uid)
             .set({
-              email: email.value,
+              username: username.value,
               score: 0,
             });
         });
@@ -33,6 +33,10 @@ const Signup = ({ history }) => {
         <label htmlFor="email">
           Email
           <input type="text" name="email" id="email" placeholder="enter your name" />
+        </label>
+        <label htmlFor="username">
+          username
+          <input type="username" name="username" id="username" placeholder="enter your name" />
         </label>
         <label htmlFor="password">
           password

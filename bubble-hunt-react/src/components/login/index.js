@@ -10,9 +10,13 @@ class Login extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const { email, password } = this.state;
+    const {
+      history: { push },
+    } = this.props;
     app
       .auth()
       .signInWithEmailAndPassword(email, password)
+      .then(() => push('/'))
       .catch(console.warn);
   };
 

@@ -26,6 +26,7 @@ const Home = ({ history: { push } }) => {
           tabIndex="-1"
         >
           <img
+            className="game-image"
             src="https://cdn0.iconfinder.com/data/icons/startup-and-new-business-3/24/target-512.png"
             alt="aim game"
             id="aim"
