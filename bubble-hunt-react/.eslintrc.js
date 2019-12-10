@@ -9,6 +9,7 @@ module.exports = {
   parser: "babel-eslint",
   rules: {
     'react/state-in-constructor': 0,
+    'react/prop-types': 0,
     "import/no-unresolved": "off",
     "react/jsx-filename-extension": [
       1,

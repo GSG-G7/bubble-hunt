@@ -1,24 +1,27 @@
-import React, { Component } from "react";
-import { app } from "../base";
+import React, { Component } from 'react';
+import { app } from '../base';
 
 class Login extends Component {
   state = {
-    email: "",
-    password: ""
+    email: '',
+    password: '',
   };
+
   handleSubmit = e => {
     e.preventDefault();
     const { email, password } = this.state;
-    app.auth().signInWithEmailAndPassword(email, password)
-    .catch(console.warn)
-   
+    app
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .catch(console.warn);
   };
 
   handleChange = e => {
     const key = e.target.name;
-    const value = e.target.value;
+    const { value } = e.target;
     this.setState({ [key]: value });
   };
+
   render() {
     const { email, password } = this.state;
     return (
