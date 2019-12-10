@@ -1,22 +1,23 @@
 import React , { useEffect, useState } from 'react';
-import app from './base';
+import {app} from './base';
 
 export const AuthContext = React.createContext();
 
-export const AuthProvider = ({ children }) => {
-    const [currentUser, serCurrentUser ] = useState(null);
-
-    useEffect(() => {
-        app.auth().onAuthStateChanged(serCurrentUser);
-    }, [])
-
+export class AuthProvider extends React.Component {
+    state ={
+        currentUser: null,
+    }
+    componentDidMount(){
+    }
+render(){
     return (
         <AuthContext.Provider
-        vlaue={{
-            currentUser
+        value={{
+            currentUser: this.state.currentUser
         }}
         >
-            {children}
+            {this.props.children}
         </AuthContext.Provider>
     )
-};
+}   
+}
