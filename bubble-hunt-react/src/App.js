@@ -1,37 +1,47 @@
-import React from "react";
-import { app } from "./components/base";
-
+import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import AimGame from "./components/aimGame";
-import Home from "./components/home";
-import Login from "./components/login";
-import Signup from "./components/signup";
-import PrivateRoute from './components/privetRoute';
-import "./App.css";
+import { app } from './components/base';
+
+import AimGame from './components/aimGame';
+import Home from './components/home';
+import Login from './components/login';
+import Signup from './components/signup';
+import PrivateRoute from './components/PrivateRoute';
+import './App.css';
 
 class App extends React.Component {
-  state= {
+  state = {
     currentUser: null,
+  };
+
+  componentDidMount() {
+    app.auth().onAuthStateChanged(currentUser => this.setState({ currentUser }));
   }
-  handleLogout =  () =>  {
-     app.auth().signOut()
-     .then(() => this.setState({currentUser: null}))
-     .catch(e => console.log('error in logout'))
-    
-  }
-  setUser = (currentUser) => this.setState({currentUser});
+
+  handleLogout = () => {
+    app
+      .auth()
+      .signOut()
+      .catch(e => console.log('error in logout', e));
+  };
+
   render() {
+    const { currentUser } = this.state;
     return (
       <Router>
-      {this.state.currentUser && <button onClick={this.handleLogout}>Logout</button>}
-          <Switch>
-          <PrivateRoute exact path="/sign-up" component={Signup} setUser={this.setUser} currentUser={!this.state.currentUser}/>
-          <PrivateRoute exact path="/" component={Home} currentUser={this.state.currentUser} />
-          <Route exact path="/login" component={(routerProps)=> <Login setUser={this.setUser} {...routerProps}/>} />
+        {currentUser && (
+          <button onClick={this.handleLogout} type="button">
+            Logout
+          </button>
+        )}
+        <Switch>
+          <PrivateRoute exact path="/sign-up" component={Signup} currentUser={!currentUser} />
+          <PrivateRoute exact path="/" component={Home} currentUser={currentUser} />
+          <Route exact path="/login" component={Login} />
           <PrivateRoute exact path="/aim-game" component={AimGame} />
-          </Switch>
-        </Router>
-    )
+        </Switch>
+      </Router>
+    );
   }
 }
 

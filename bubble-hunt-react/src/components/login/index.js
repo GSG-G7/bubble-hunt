@@ -9,13 +9,8 @@ class Login extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const { email, password } = this.state;
-    console.log({ email, password });
-    app.auth().signInWithEmailAndPassword(email, password).then(
-          app.auth().onAuthStateChanged(currentUser => {
-            console.log("from onAuthstateChange", currentUser);
-            this.props.setUser(currentUser);
-          })
-        ).catch(console.warn)
+    app.auth().signInWithEmailAndPassword(email, password)
+    .catch(console.warn)
    
   };
 
