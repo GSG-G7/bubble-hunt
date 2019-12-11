@@ -6,6 +6,7 @@ import AimGame from './components/aimGame';
 import Home from './components/home';
 import Login from './components/login';
 import Signup from './components/signup';
+import Stats from './components/stats'
 import PrivateRoute from './components/PrivateRoute';
 import './App.css';
 
@@ -13,6 +14,7 @@ class App extends React.Component {
   state = {
     currentUser: null,
     loading: true,
+    userInfo:null, 
   };
 
   componentDidMount() {
@@ -53,15 +55,18 @@ class App extends React.Component {
     const { Logout } = this;
     if (loading) return <h1>Loading...</h1>;
     return (
+      <div className="background">
       <Router>
         {currentUser && <Logout />}
         <Switch>
           <Route exact path="/" component={Home} />
-          <PrivateRoute path="/aim-game" component={AimGame} currentUser={currentUser} />
+          <PrivateRoute path="/aim-game" component={props => <AimGame {...props} currentUser={currentUser} />} currentUser={currentUser} />
           <PrivateRoute path="/sign-up" component={Signup} currentUser={!currentUser} />
           <PrivateRoute path="/login" component={Login} currentUser={!currentUser} />
+          <PrivateRoute path="/stats" component={props=><Stats {...props} currentUser={currentUser}/>} currentUser={currentUser} />
         </Switch>
       </Router>
+      </div>
     );
   }
 }

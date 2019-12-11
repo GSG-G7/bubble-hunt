@@ -1,47 +1,29 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 @import url(https://fonts.googleapis.com/css?family=Oswald:400);
 
-.navigation {
+.background {
   width: 100%;
-  background-color: black;
+  min-height: 100vh;
+  display: block;
+  position: relative;
+  /* margin-top: -20px; */
+}
+
+.background::after {
+  content: "";
+  background: url(./assests/depositphotos_8894419-stock-illustration-pastel-tones-bubble-background.jpg);
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1; 
+}
+
+.navigation {
+  width: 140px;
+  height: 50px;
+  border-radius: 5px;
 }
 
 img {
@@ -66,12 +48,10 @@ img {
 
 .button {
 	text-decoration: none;
-	float: left;
   padding: 12px;
   margin: 15px;
-  color: white;
+  color: rgb(134, 9, 9);
   width: 25px;
-  background-color: black;
   transition: width .35s;
   -webkit-transition: width .35s;
   overflow: hidden;
@@ -87,3 +67,10 @@ img {
   opacity: .9;
 }
 
+.small {
+  cursor: pointer;
+  margin-left: 5px;
+}
+.small:hover {
+  color: red;
+}
