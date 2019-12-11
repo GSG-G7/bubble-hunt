@@ -1,10 +1,10 @@
-import React from "react";
-import Bubble from "../bubble";
-import "./style.css";
+import React from 'react';
+import Bubble from '../bubble';
+import './style.css';
 
 const createCanvas = units => {
   const arr = new Array(units);
-  for (var i = 0; i < arr.length; i++) {
+  for (let i = 0; i < arr.length; i++) {
     arr[i] = new Array(units).fill(0);
   }
   return arr;
@@ -32,7 +32,7 @@ export default ({ units, bubbles, bubbleOnClick, canvasOnClick }) => {
         e.map((e, j) => (
           <Bubble
             units={units}
-            className={`bubble ${e ? "bubble--inactive" : ""}`}
+            className={`bubble ${e ? 'bubble--inactive' : ''}`}
             onClick={
               e
                 ? event => {
@@ -41,8 +41,8 @@ export default ({ units, bubbles, bubbleOnClick, canvasOnClick }) => {
                   }
                 : undefined
             }
-            key={i + "" + j}
-            id={i + "" + j}
+            key={`${i  }${  j}`}
+            id={`${i  }${  j}`}
           />
         ))
       )}
