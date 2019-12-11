@@ -60,7 +60,7 @@ class App extends React.Component {
         {currentUser && <Logout />}
         <Switch>
           <Route exact path="/" component={Home} />
-          <PrivateRoute path="/aim-game" component={AimGame} currentUser={currentUser} />
+          <PrivateRoute path="/aim-game" component={props => <AimGame {...props} currentUser={currentUser} />} currentUser={currentUser} />
           <PrivateRoute path="/sign-up" component={Signup} currentUser={!currentUser} />
           <PrivateRoute path="/login" component={Login} currentUser={!currentUser} />
           <PrivateRoute path="/stats" component={props=><Stats {...props} currentUser={currentUser}/>} currentUser={currentUser} />

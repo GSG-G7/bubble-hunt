@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Canvas from '../canvas';
+import { app, database } from '../base';
 
 import './style.css';
 
@@ -93,9 +94,16 @@ export default class AimGame extends Component {
   };
 
   endGame = () => {
+    const { score } = this.state; 
     clearTimeout(this.t);
     // // save record in local storage ...
     this.setState({ start: false, bubbles: [], lives: 0 });
+    console.log(this.state.score)
+    console.log(this.props.currentUser.uid)
+    const { currentUser : { uid } } = this.props;
+    database.collection('users').doc(uid).update({
+      score
+    })
   };
 
   setBestScore = () => {
