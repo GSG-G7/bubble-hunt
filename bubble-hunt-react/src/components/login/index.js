@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { app } from '../base';
+import { app, database } from '../base';
 
 class Login extends Component {
   state = {
@@ -16,6 +16,12 @@ class Login extends Component {
     app
       .auth()
       .signInWithEmailAndPassword(email, password)
+      .then(({user:{uid}})=> {
+        database.collection('users').doc(uid).get().then(data => {
+          const userInfo = data.data();
+          localStorage.setItem('userInfo', JSON.stringify(userInfo))
+        })        
+      })
       .then(() => push('/'))
       .catch(console.warn);
   };

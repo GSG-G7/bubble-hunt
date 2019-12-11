@@ -110,6 +110,7 @@ export default class AimGame extends Component {
 
   render() {
     const { bubbles, start, score, lives } = this.state;
+    const { history : { push } } = this.props;
     return (
       <div className="game-container">
         <h3 onClick={start ? this.endGame : this.startGame} className="start-end-text">
@@ -118,6 +119,12 @@ export default class AimGame extends Component {
         <h3>
           your score is : {score} lives: {lives} best score :{this.getBestScore()}
         </h3>
+        <p>
+          see the heighes score for all plyers 
+          <small onClick={() => push('/stats')} role="button" tabIndex="-1" onKeyDown={() => {}} className="small">
+            click here ..
+          </small>
+        </p>
         <Canvas
           units={units}
           bubbles={bubbles}

@@ -5,7 +5,7 @@
   min-height: 100vh;
   display: block;
   position: relative;
-  margin-top: -20px;
+  /* margin-top: -20px; */
 }
 
 .background::after {
@@ -67,3 +67,10 @@ img {
   opacity: .9;
 }
 
+.small {
+  cursor: pointer;
+  margin-left: 5px;
+}
+.small:hover {
+  color: red;
+}

@@ -1,6 +1,9 @@
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
+// import * as admin from 'firebase-admin';
+// admin.initializeApp();
+// const db = admin.firestore();
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: 'AIzaSyBACbto5F7QxpHE-CaT9fpF19K5oPWIRpc',
@@ -16,4 +19,4 @@ const app = firebase.initializeApp(firebaseConfig);
 app.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
 const database = app.firestore();
 
-export { app, database };
+export { app, database};
