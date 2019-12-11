@@ -14,7 +14,7 @@ class App extends React.Component {
   state = {
     currentUser: null,
     loading: true,
-    userInfo:null, //
+    userInfo:null, 
   };
 
   componentDidMount() {
