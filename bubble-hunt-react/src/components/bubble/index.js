@@ -1,5 +1,6 @@
-import React from "react";
-import "./style.css";
+import React from 'react';
+import './style.css';
+
 export default ({ units, className, onClick, id }) => (
   <div
     className={className}
@@ -9,5 +10,5 @@ export default ({ units, className, onClick, id }) => (
     //   width: `${units * units * 0.5}px`,
     //   height: `${units * units * 0.5}px`
     // }}
-  ></div>
+  />
 );

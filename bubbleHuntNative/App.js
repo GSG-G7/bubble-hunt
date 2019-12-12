@@ -1,13 +1,8 @@
 import React from 'react';
-import {SafeAreaView, StyleSheet, ScrollView, View, Text, StatusBar} from 'react-native';
+import AppStack from './router';
 
-const App = () => {
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>\</SafeAreaView>
-    </>
-  );
-};
-
-export default App;
+export default class App extends React.Component {
+  render() {
+    return <AppStack />;
+  }
+}

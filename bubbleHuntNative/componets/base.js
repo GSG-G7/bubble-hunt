@@ -19,4 +19,4 @@ const app = firebase.initializeApp(firebaseConfig);
 app.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
 const database = app.firestore();
 
-export { app, database };
+export {app, database};
